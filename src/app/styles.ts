@@ -6,11 +6,16 @@ export const styles = StyleSheet.create({
     backgroundColor: '#0D0D0D',
     flexDirection: 'column',
   },
+  image: {
+    flex: 1,
+    marginTop: 50,
+    alignItems: 'center',
+  },
   main: {
     marginTop: 150,
     paddingRight: 24,
     paddingLeft: 24,
-    backgroundColor: '#333333',
+    backgroundColor: '#1A1A1A',
     flexDirection: 'column',
     height: '100%',
   },
@@ -38,5 +43,64 @@ export const styles = StyleSheet.create({
     backgroundColor: '#1E6F9F',
     color: '#FFFFFF',
     borderRadius: 6
+  },
+  statusContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+  statusFeedback: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  statusTextCreate: {
+    color: '#4EA8DE',
+    fontWeight: '700',
+    fontSize: 14
+  },
+  statusTextFinish: {
+    color: '#8284FA',
+    fontWeight: '700',
+    fontSize: 14
+  },
+  statusQuantity: {
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+    backgroundColor: '#333333',
+    borderRadius: 999
+  },
+  textStatusQuantity: {
+    color: '#fff'
+  },
+  containerTasks: {
+    flex: 1,
+    gap: 8,
+    maxWidth: 'auto',
+    marginTop: 18
+  },
+  containerEmpty: {
+    flex: 1,
+    borderTopWidth: 1,
+    borderTopColor: '#333333',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  textEmpty: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#808080'
+  },
+  taskContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  removeTaskButton: {
+
+  },
+  markedTask: {
+    flexDirection: 'row',
+  },
+  textTask: {
+    /* flexShrink: 1, */
   }
 });

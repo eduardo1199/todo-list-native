@@ -1,4 +1,4 @@
-import { View, Image, TextInput, TouchableOpacity, StatusBar, Text } from 'react-native';
+import { View, Image, TextInput, TouchableOpacity, StatusBar, Text, FlatList } from 'react-native';
 import { styles } from './styles';
 import { useContext, useState } from 'react';
 import EvilIcons from '@expo/vector-icons/EvilIcons'
@@ -53,34 +53,38 @@ export default function Home() {
         </View>
 
         <View style={styles.containerTasks}>
-          {tasks.map((task) => {
-            return (
-              <View style={styles.taskContent} key={task.id}>
-              
-                <View style={styles.taskCheckBox}>
-                  <CheckBox 
-                    checked={task.checked}
-                    title={task.text} 
-                    checkedIcon="dot-circle-o"
-                    uncheckedIcon="circle-o"
-                    containerStyle={{
-                      backgroundColor: 'transparent',
-                    }}
-                    textStyle={{
-                      color: task.checked ? '#808080': 'white',
-                      textDecorationLine: task.checked ? 'line-through': 'none',
-                    }}
-                    checkedColor='#8284FA'
-                    onPress={() => handleChangeMarkedTask(!task.checked, task.id)}
-                  />
-                </View>
+          <FlatList 
+            data={tasks}
+            keyExtractor={task => task.id}
+            showsVerticalScrollIndicator
+            renderItem={({ item }) => {
+              return (
+                <View style={styles.taskContent}>       
+                  <View style={styles.taskCheckBox}>
+                    <CheckBox 
+                      checked={item.checked}
+                      title={item.text} 
+                      checkedIcon="dot-circle-o"
+                      uncheckedIcon="circle-o"
+                      containerStyle={{
+                        backgroundColor: 'transparent',
+                      }}
+                      textStyle={{
+                        color: item.checked ? '#808080': 'white',
+                        textDecorationLine: item.checked ? 'line-through': 'none',
+                      }}
+                      checkedColor='#8284FA'
+                      onPress={() => handleChangeMarkedTask(!item.checked, item.id)}
+                    />
+                  </View>
     
-                <TouchableOpacity style={styles.removeTaskButton} onPress={() => handleDeleteTask(task.id)}>
-                  <EvilIcons name="trash" size={24} color="white" />
-                </TouchableOpacity>
-              </View>
-            )
-          })}
+                  <TouchableOpacity style={styles.removeTaskButton} onPress={() => handleDeleteTask(item.id)}>
+                    <EvilIcons name="trash" size={24} color="white" />
+                  </TouchableOpacity>
+                </View>
+              )
+            }}
+          />
         </View>
       </View>
     </View>
